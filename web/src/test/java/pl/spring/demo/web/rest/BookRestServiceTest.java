@@ -15,10 +15,14 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import pl.spring.demo.service.BookService;
 import pl.spring.demo.to.BookTo;
+import pl.spring.demo.web.utils.FileUtils;
 
+import java.io.File;
 import java.util.Arrays;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -66,5 +70,19 @@ public class BookRestServiceTest {
                 .andExpect(jsonPath("[1].id").value(bookTo2.getId().intValue()))
                 .andExpect(jsonPath("[1].title").value(bookTo2.getTitle()))
                 .andExpect(jsonPath("[1].authors").value(bookTo2.getAuthors()));
+    }
+
+    @Test
+    public void testShouldSaveBook() throws Exception {
+        // given
+        File file = FileUtils.getFileFromClasspath("classpath:pl/spring/demo/web/json/bookToSave.json");
+        String json = FileUtils.readFileToString(file);
+        // when
+        ResultActions response = this.mockMvc.perform(post("/book")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json.getBytes()));
+        // then
+        response.andExpect(status().isOk());
     }
 }
