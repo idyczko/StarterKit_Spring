@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Lista książek</title>
+    <link rel="stylesheet" href="/workshop/resources/css/application.css" />
+</head>
+<body ng-app="book-app">
+<section ng-controller="TestCtrl">
+    <p>Podaj tytuł książki</p>
+    <input type="text" ng-model="prefix">
+    <button ng-click="search()">Szukaj</button>
+    <button ng-click="addBook()">Dodaj książkę</button>
+    <!--<article>-->
+        <!--<pre>{{books | json}}</pre>-->
+    <!--</article>-->
+    <table>
+        <tr>
+            <th>Tytuł</th>
+            <th>Autorzy</th>
+            <th>Usuń</th>
+        </tr>
+        <tr ng-repeat="book in books">
+            <td>{{ book.title }}</td>
+            <td>{{ book.authors }}</td>
+            <td>
+                <button ng-click="delete(book.id)">Usuń</button>
+            </td>
+        </tr>
+    </table>
+</section>
+
+<script src="js/vendor/angular.js"></script>
+<script src="js/vendor/jquery-2.1.4.min.js"></script>
+<script src="js/app/books.js"></script>
+
+</body>
+</html>
