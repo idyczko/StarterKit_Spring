@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <parent>
         <artifactId>business-logic</artifactId>
         <groupId>pl.spring.demo</groupId>
@@ -12,8 +13,9 @@
     <artifactId>web</artifactId>
 
     <properties>
-        <testSourceDirectory>src/test/java</testSourceDirectory>
         <sourceDirectory>src/main/java</sourceDirectory>
+        <js.client.dir>src/main/client</js.client.dir>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
     </properties>
 
     <dependencies>
@@ -57,12 +59,6 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
-        <!-- thymeleaf -->
-        <dependency>
-            <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf-spring4</artifactId>
-            <version>2.1.4.RELEASE</version>
-        </dependency>
         <!-- test -->
         <dependency>
             <groupId>org.mockito</groupId>
@@ -79,14 +75,97 @@
 
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>jsclient</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>npm-install</id>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>npm</executable>
+                                    <arguments>
+                                        <argument>install</argument>
+                                    </arguments>
+                                    <workingDirectory>${js.client.dir}</workingDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>gulp-clean</id>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>gulp</executable>
+                                    <arguments>
+                                        <argument>clean</argument>
+                                    </arguments>
+                                    <workingDirectory>${js.client.dir}</workingDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>gulp-build</id>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>gulp</executable>
+                                    <arguments>
+                                        <argument>build:dist</argument>
+                                    </arguments>
+                                    <workingDirectory>${js.client.dir}</workingDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>gulp-test</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>gulp</executable>
+                                    <arguments>
+                                        <argument>test</argument>
+                                    </arguments>
+                                    <workingDirectory>${js.client.dir}</workingDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <build>
-        <testSourceDirectory>${testSourceDirectory}</testSourceDirectory>
-        <sourceDirectory>${sourceDirectory}</sourceDirectory>
         <resources>
             <resource>
                 <directory>${project.basedir}/src/main/resources</directory>
             </resource>
+            <resource>
+                <directory>${js.client.dir}/dist</directory>
+                <targetPath>static</targetPath>
+            </resource>
         </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
     </build>
 
 </project>

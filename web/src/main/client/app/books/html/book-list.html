@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+<section>
+
+    <!--&lt;!&ndash; Subscribe to success flash messages. &ndash;&gt;-->
+    <!--<div flash-alert="success" active-class="in" class="alert fade">-->
+        <!--<strong class="alert-heading">Congrats!</strong>-->
+        <!--<span class="alert-message">{{flash.message}}</span>-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash; Subscribe to error flash messages. &ndash;&gt;-->
+    <!--<div flash-alert="error" active-class="in" class="alert fade">-->
+        <!--<strong class="alert-heading">Boo!</strong>-->
+        <!--<span class="alert-message">{{flash.message}}</span>-->
+    <!--</div>-->
+
+    <p>Podaj tytuł książki</p>
+    <input type="text" ng-model="prefix">
+    <button ng-click="search()">Szukaj</button>
+    <button ng-click="addBook()">Dodaj książkę</button>
+
+    <table>
+        <tr>
+            <th>Tytuł</th>
+            <th>Autorzy</th>
+            <th>Usuń</th>
+        </tr>
+        <tr ng-repeat="book in books">
+            <td>{{ book.title }}</td>
+            <td>{{ book.authors }}</td>
+            <td>
+                <button ng-click="deleteBook(book.id)">Usuń</button>
+            </td>
+        </tr>
+    </table>
+</section>
+</body>
+</html>
