@@ -1,11 +1,9 @@
-angular.module('app.books').controller('BookSearchController', function ($scope, $window, $location, bookService, flash) {
+angular.module('app.books').controller('BookSearchController', function ($scope, $window, $location, bookService, Flash) {
     'use strict';
 
     $scope.books = [];
     $scope.gridOptions = { data: 'books' };
     $scope.prefix = undefined;
-
-    flash.success = 'Do it live!';
 
     var removeBookById = function (bookId) {
         for (var i = 0; i < $scope.books.length; i = i + 1) {
@@ -25,6 +23,7 @@ angular.module('app.books').controller('BookSearchController', function ($scope,
     $scope.deleteBook = function (bookId) {
         bookService.deleteBook(bookId).then(function () {
             removeBookById(bookId);
+            Flash.create('success', 'Książka została usunięta.', 'custom-class');
         });
     };
 
