@@ -42,4 +42,28 @@ public class BookRepositoryTest {
         assertFalse(booksEntity.isEmpty());
         assertEquals("Pierwsza książka", booksEntity.get(0).getTitle());
     }
+
+    @Test
+    public void testShouldFindBooksByAuthorFirstName() {
+        // given
+        final String author = "jan";
+        // when
+        List<BookEntity> booksEntity = bookRepository.findBookByAuthor(author);
+        // then
+        assertNotNull(booksEntity);
+        assertFalse(booksEntity.isEmpty());
+        assertEquals("Pierwsza książka", booksEntity.get(0).getTitle());
+    }
+
+    @Test
+    public void testShouldFindBooksByAuthorLastName() {
+        // given
+        final String author = "kowalski";
+        // when
+        List<BookEntity> booksEntity = bookRepository.findBookByAuthor(author);
+        // then
+        assertNotNull(booksEntity);
+        assertFalse(booksEntity.isEmpty());
+        assertEquals("Pierwsza książka", booksEntity.get(0).getTitle());
+    }
 }
