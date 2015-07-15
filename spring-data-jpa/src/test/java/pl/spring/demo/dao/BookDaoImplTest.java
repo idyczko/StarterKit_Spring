@@ -1,4 +1,4 @@
-package pl.spring.demo.repository;
+package pl.spring.demo.dao;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,18 +14,18 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "CommonRepositoryTest-context.xml")
-public class BookRepositoryTest {
+@ContextConfiguration(locations = "CommonDaoTest-context.xml")
+public class BookDaoImplTest {
 
     @Autowired
-    private BookRepository bookRepository;
+    private BookDao bookDao;
 
     @Test
     public void testShouldFindBookById() {
         // given
         final long bookId = 1;
         // when
-        BookEntity bookEntity = bookRepository.findOne(bookId);
+        BookEntity bookEntity = bookDao.findOne(bookId);
         // then
         assertNotNull(bookEntity);
         assertEquals("Pierwsza książka", bookEntity.getTitle());
@@ -36,7 +36,7 @@ public class BookRepositoryTest {
         // given
         final String bookTitle = "p";
         // when
-        List<BookEntity> booksEntity = bookRepository.findBookByTitle(bookTitle);
+        List<BookEntity> booksEntity = bookDao.findBookByTitle(bookTitle);
         // then
         assertNotNull(booksEntity);
         assertFalse(booksEntity.isEmpty());
