@@ -1,6 +1,6 @@
 package pl.spring.demo.to;
 
-public class BookTo {
+public class BookTo implements IdAware {
     private Long id;
     private String title;
     private String authors;
@@ -14,6 +14,7 @@ public class BookTo {
         this.authors = authors;
     }
 
+    @Override
     public Long getId() {
         return id;
     }
