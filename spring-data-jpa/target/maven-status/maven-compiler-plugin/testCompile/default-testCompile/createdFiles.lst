@@ -1,1 +1,2 @@
-pl\spring\demo\repository\BookRepositoryTest.class
+pl\spring\demo\service\BookServiceImplTest.class
+pl\spring\demo\properties\PropertiesTest.class

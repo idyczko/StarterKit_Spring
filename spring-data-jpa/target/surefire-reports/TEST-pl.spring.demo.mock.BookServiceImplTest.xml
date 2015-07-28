@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pl.spring.demo.repository.BookRepositoryTest" time="0.04" tests="1" errors="0" skipped="0" failures="0">
+<testsuite name="pl.spring.demo.mock.BookServiceImplTest" time="0.18" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="13.1.6"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -12,13 +12,13 @@
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="idea.launcher.port" value="7536"/>
+    <property name="idea.launcher.port" value="7539"/>
     <property name="user.script" value=""/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="Service Pack 1"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\projects\prezentation\business_logic_spring_hibernate"/>
+    <property name="user.dir" value="C:\projects\prezentation\starter-kit"/>
     <property name="java.runtime.version" value="1.8.0_40-b26"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_40\jre\lib\endorsed"/>
@@ -64,5 +64,5 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="testShouldFindBookById" classname="pl.spring.demo.repository.BookRepositoryTest" time="0.04"/>
+  <testcase name="testShouldSaveBook" classname="pl.spring.demo.mock.BookServiceImplTest" time="0.18"/>
 </testsuite>
