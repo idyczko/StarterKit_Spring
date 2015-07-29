@@ -17,39 +17,39 @@ import static org.junit.Assert.*;
 @ContextConfiguration(locations = "CommonServiceTest-context.xml")
 public class BookServiceImplTest {
 
-    @Autowired
-    private BookService bookService;
+	@Autowired
+	private BookService bookService;
 
-    @Test
-    public void testShouldFindAllBooks() {
-        // when
-        List<BookTo> allBooks = bookService.findAllBooks();
-        // then
-        assertNotNull(allBooks);
-        assertFalse(allBooks.isEmpty());
-        assertEquals(6, allBooks.size());
-    }
+	@Test
+	public void testShouldFindAllBooks() {
+		// when
+		List<BookTo> allBooks = bookService.findAllBooks();
+		// then
+		assertNotNull(allBooks);
+		assertFalse(allBooks.isEmpty());
+		assertEquals(6, allBooks.size());
+	}
 
-    @Test
-    @Ignore
-    public void testShouldFindAllBooksByTitle() {
-        // given
-        final String title = "Opium w rosole";
-        // when
-        List<BookTo> booksByTitle = bookService.findBooksByTitle(title);
-        // then
-        assertNotNull(booksByTitle);
-        assertFalse(booksByTitle.isEmpty());
-    }
+	@Test
+	@Ignore
+	public void testShouldFindAllBooksByTitle() {
+		// given
+		final String title = "Opium w rosole";
+		// when
+		List<BookTo> booksByTitle = bookService.findBooksByTitle(title);
+		// then
+		assertNotNull(booksByTitle);
+		assertFalse(booksByTitle.isEmpty());
+	}
 
-    @Test(expected = BookNotNullIdException.class)
-    public void testShouldThrowBookNotNullIdException() {
-        // given
-        final BookTo bookToSave = new BookTo();
-        bookToSave.setId(22L);
-        // when
-        bookService.saveBook(bookToSave);
-        // then
-        fail("test should throw BookNotNullIdException");
-    }
+	@Test(expected = BookNotNullIdException.class)
+	public void testShouldThrowBookNotNullIdException() {
+		// given
+		final BookTo bookToSave = new BookTo();
+		bookToSave.setId(22L);
+		// when
+		bookService.saveBook(bookToSave);
+		// then
+		fail("test should throw BookNotNullIdException");
+	}
 }

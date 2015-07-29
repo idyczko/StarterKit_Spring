@@ -3,11 +3,14 @@ package pl.spring.demo.service.impl;
 import pl.spring.demo.dao.BookDao;
 import pl.spring.demo.service.BookService;
 import pl.spring.demo.to.BookTo;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.*;
 import java.util.List;
 
+@Service
 public class BookServiceImpl implements BookService {
 
+	@Autowired
     private BookDao bookDao;
 
     @Override

@@ -4,16 +4,19 @@ import pl.spring.demo.annotation.NullableId;
 import pl.spring.demo.common.Sequence;
 import pl.spring.demo.dao.BookDao;
 import pl.spring.demo.to.BookTo;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Service
 public class BookDaoImpl implements BookDao {
 
     private final Set<BookTo> ALL_BOOKS = new HashSet<>();
 
+    @Autowired
     private Sequence sequence;
 
     public BookDaoImpl() {
@@ -39,7 +42,7 @@ public class BookDaoImpl implements BookDao {
     @NullableId
     public BookTo save(BookTo book) {
         if (book.getId() == null) {
-            book.setId(sequence.nextValue(ALL_BOOKS));
+        //    book.setId(sequence.nextValue(ALL_BOOKS));
         }
         ALL_BOOKS.add(book);
         return book;
@@ -49,6 +52,9 @@ public class BookDaoImpl implements BookDao {
         this.sequence = sequence;
     }
 
+    public void setaId(BookTo book){
+    	book.setId(sequence.nextValue(ALL_BOOKS));
+    }
     private void addTestBooks() {
         ALL_BOOKS.add(new BookTo(1L, "Romeo i Julia", "Wiliam Szekspir"));
         ALL_BOOKS.add(new BookTo(2L, "Opium w rosole", "Hanna Ożogowska"));
