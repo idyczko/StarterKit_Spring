@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: pl.spring.demo.service.BookServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 sec - in pl.spring.demo.service.BookServiceImplTest
