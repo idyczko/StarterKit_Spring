@@ -1,6 +1,6 @@
 package pl.spring.demo.service.impl;
 
-import pl.spring.demo.BookMapper;
+import pl.spring.demo.mapper.BookMapper;
 import pl.spring.demo.dao.BookDao;
 import pl.spring.demo.service.BookService;
 import pl.spring.demo.to.BookTo;

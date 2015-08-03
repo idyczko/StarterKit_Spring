@@ -1,4 +1,4 @@
-package pl.spring.demo;
+package pl.spring.demo.mapper;
 
 import java.util.ArrayList;
 import java.util.HashSet;

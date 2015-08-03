@@ -16,7 +16,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import pl.spring.demo.BookMapper;
+import pl.spring.demo.mapper.BookMapper;
 import pl.spring.demo.dao.BookDao;
 import pl.spring.demo.service.impl.BookServiceImpl;
 import pl.spring.demo.to.AuthorTo;
