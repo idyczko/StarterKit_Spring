@@ -5,10 +5,21 @@ public class AuthorTo implements IdAware {
 	private String firstName;
 	private String lastName;
 
-	public AuthorTo(Long id, String firstName, String lastName) {
+	public AuthorTo() {
+
+	}
+
+	public AuthorTo(Long id, String author) {
+		String[] authorTab;
 		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		try {
+			authorTab = author.split(" ");
+		} catch (NullPointerException e) {
+			this.firstName = this.lastName = author;
+			return;
+		}
+		this.firstName = authorTab[0];
+		this.lastName = authorTab[authorTab.length - 1];
 	}
 
 	@Override

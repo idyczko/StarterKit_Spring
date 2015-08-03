@@ -1,7 +1,5 @@
 package pl.spring.demo.to;
 
-import pl.spring.demo.to.*;
-
 public class BookTo implements IdAware {
 	private Long id;
 	private String title;
