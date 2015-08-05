@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Tablica książek</title>
+        <link rel="stylesheet" th:href="@{/static/application.css}" href="/static/application.css" />
+</head>
+<body>
+<table class="CSSTableGenerator">
+	<tr class="title">
+		<th colspan="4">Books Table</th>
+	</tr>
+	<tr class="headers">
+        <th style="width:5%"><font size="6">Id</font></th>
+        <th><font size="6">Title</font></th>
+        <th><font size="6">Authors</font></th>
+        <th style="width:10%"><font size="6">Delete</font></th>
+	</tr>
+    <div th:each="book : ${books}">
+    	<tr class="commonrow">
+        	<td class ="idcell" th:text="${book.id}">id</td>
+        	<td th:text="${book.title}"><font size="5">title</font></td>
+        	<td th:text="${book.authors}"><font size="5">authors</font></td>
+        	<td><form action="/workshop/book-by-id" method="post">
+    		<input type="hidden" name="id" th:value="${book.id}"/>
+    		<button class ="commoncell" type="submit">Delete</button>
+			</form></td>
+    	</tr>
+    </div>
+</table>
+</body>
+</html>

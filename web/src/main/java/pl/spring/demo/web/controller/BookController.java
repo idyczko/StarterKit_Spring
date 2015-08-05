@@ -21,4 +21,11 @@ public class BookController {
         params.put("books", allBooks);
         return "bookList";
     }
+    
+    @RequestMapping(value = "/books_tab", method = RequestMethod.GET)
+    public String bookTab(Map<String, Object> params) {
+    	final List<BookTo> allBooks = bookService.findAllBooks();
+    	params.put("books", allBooks);
+    	return "bookTab";
+    }
 }
