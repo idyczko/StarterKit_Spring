@@ -2,13 +2,13 @@
 <html xmlns:th="http://thymeleaf.org">
 <head lang="en">
 <meta charset="UTF-8" />
-<title>Book deleted</title>
+<title>Book inserted</title>
 <link rel="stylesheet" th:href="@{/static/application.css}"
 	href="/static/application.css" />
 </head>
 <body class="commoncell">
-	<p th:inline="text">Book with title "[[${deletedBook.title}]]" was
-		successfully deleted.</p>
+	<p th:inline="text">Book with title "[[${insertedBook.title}]]" was
+		successfully inserted.</p>
 	<p>
 		Click <a href="http://localhost:9721/workshop/books_tab">here</a> to
 		come back to table of books.

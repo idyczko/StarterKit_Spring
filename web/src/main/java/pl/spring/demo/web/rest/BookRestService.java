@@ -1,15 +1,17 @@
 package pl.spring.demo.web.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import pl.spring.demo.service.BookService;
 import pl.spring.demo.to.BookTo;
-
-import java.util.List;
-import java.util.Map;
 
 @Controller
 @ResponseBody
@@ -28,9 +30,13 @@ public class BookRestService {
 		return bookService.saveBook(book);
 	}
 
-	@RequestMapping(value = "/book-by-id", method = RequestMethod.POST)
-	public ModelAndView deleteBookById(@RequestParam("id") Long id, Map<String, Object> params) {
-		params.put("deletedBook", bookService.deleteBookById(id));
-		return new ModelAndView("bookDeleted", params);
+	@RequestMapping(value = "/book", method = RequestMethod.PUT)
+	public BookTo updateBook(@RequestBody BookTo book) {
+		return bookService.updateBook(book);
+	}
+
+	@RequestMapping(value = "/book", method = RequestMethod.DELETE)
+	public BookTo deleteBookById(@RequestParam("id") Long id) {
+		return bookService.deleteBookById(id);
 	}
 }

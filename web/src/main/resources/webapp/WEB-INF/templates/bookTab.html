@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head lang="en">
-    <meta charset="UTF-8"/>
-    <title>Tablica książek</title>
-        <link rel="stylesheet" th:href="@{/static/application.css}" href="/static/application.css" />
+<meta charset="UTF-8" />
+<title>Books Table</title>
+<link rel="stylesheet" th:href="@{/static/application.css}"
+	href="/static/application.css" />
 </head>
 <body>
-<table class="CSSTableGenerator">
-	<tr class="title">
-		<th colspan="4">Books Table</th>
-	</tr>
-	<tr class="headers">
-        <th style="width:5%"><font size="6">Id</font></th>
-        <th><font size="6">Title</font></th>
-        <th><font size="6">Authors</font></th>
-        <th style="width:10%"><font size="6">Delete</font></th>
-	</tr>
-    <div th:each="book : ${books}">
-    	<tr class="commonrow">
-        	<td class ="idcell" th:text="${book.id}">id</td>
-        	<td th:text="${book.title}"><font size="5">title</font></td>
-        	<td th:text="${book.authors}"><font size="5">authors</font></td>
-        	<td><form action="/workshop/book-by-id" method="post">
-    		<input type="hidden" name="id" th:value="${book.id}"/>
-    		<button class ="commoncell" type="submit">Delete</button>
-			</form></td>
-    	</tr>
-    </div>
-</table>
+	<table class="MyTable">
+		<tr>
+			<caption colspan="4">Books Table</caption>
+		</tr>
+		<tr>
+			<th>Id</th>
+			<th>Title</th>
+			<th>Authors</th>
+			<th>Delete</th>
+		</tr>
+		<div th:each="book : ${books}">
+			<tr>
+				<td th:text="${book.id}">id</td>
+				<td th:text="${book.title}">title</td>
+				<td th:text="${book.authors}">authors</td>
+				<td><form action="/workshop/controller-by-id" method="post">
+						<input type="hidden" name="id" th:value="${book.id}" />
+						<button type="submit">Delete</button>
+					</form></td>
+			</tr>
+		</div>
+	</table>
+	<p/>
+	<p class="myform"> Find a book:</p>
+	<form class="myform"  method="get">
+		Phrase: <input name="titlePrefix"/>
+		<select>
+		<option action="/workshop/find"/>
+		</select> 
+		<button type="submit">Submit</button>
+	</form>
+	<p/>
+	<p class="myform"> Add a new book here:</p>
+	<form class="myform" action="/workshop/newbook" method="post">
+		Title: <input name="title"/> 
+		Authors: <input	name="authors"/>
+		<button type="submit">Submit</button>
+	</form>
 </body>
 </html>

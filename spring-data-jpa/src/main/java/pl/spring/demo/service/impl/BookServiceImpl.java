@@ -44,8 +44,17 @@ public class BookServiceImpl implements BookService {
 	@Override
 	@Transactional
 	public BookTo deleteBookById(Long id) {
-		BookTo bookTo= BookMapper.map(bookRepository.findOne(id));
+		BookTo bookTo = BookMapper.map(bookRepository.findOne(id));
 		bookRepository.delete(id);
 		return bookTo;
+	}
+
+	@Override
+	@Transactional
+	public BookTo updateBook(BookTo book) {
+		if (bookRepository.exists(book.getId())) {
+			return BookMapper.map(bookRepository.save(BookMapper.map(book)));
+		}
+		return null;
 	}
 }
