@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: pl.spring.demo.web.controller.BookControllerTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.409 sec <<< FAILURE! - in pl.spring.demo.web.controller.BookControllerTest
+testFindAllBooks(pl.spring.demo.web.controller.BookControllerTest)  Time elapsed: 0.405 sec  <<< FAILURE!
+java.lang.AssertionError: No ModelAndView found
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:39)
+	at org.springframework.test.util.AssertionErrors.assertTrue(AssertionErrors.java:72)
+	at org.springframework.test.web.servlet.result.ViewResultMatchers$2.match(ViewResultMatchers.java:65)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:152)
+	at pl.spring.demo.web.controller.BookControllerTest.testFindAllBooks(BookControllerTest.java:36)
+
