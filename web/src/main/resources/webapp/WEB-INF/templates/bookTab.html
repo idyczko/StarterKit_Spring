@@ -22,22 +22,13 @@
 				<td th:text="${book.id}">id</td>
 				<td th:text="${book.title}">title</td>
 				<td th:text="${book.authors}">authors</td>
-				<td><form action="/workshop/controller-by-id" method="post">
+				<td><form action="/workshop/delete-by-id" method="post">
 						<input type="hidden" name="id" th:value="${book.id}" />
 						<button type="submit">Delete</button>
 					</form></td>
 			</tr>
 		</div>
 	</table>
-	<p/>
-	<p class="myform"> Find a book:</p>
-	<form class="myform"  method="get">
-		Phrase: <input name="titlePrefix"/>
-		<select>
-		<option action="/workshop/find"/>
-		</select> 
-		<button type="submit">Submit</button>
-	</form>
 	<p/>
 	<p class="myform"> Add a new book here:</p>
 	<form class="myform" action="/workshop/newbook" method="post">

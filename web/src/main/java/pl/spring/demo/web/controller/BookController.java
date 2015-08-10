@@ -31,7 +31,7 @@ public class BookController {
 		return "bookTab";
 	}
 
-	@RequestMapping(value = "/controller-by-id", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete-by-id", method = RequestMethod.POST)
 	public String deleteBookById(@RequestParam("id") Long id, Map<String, Object> params) {
 		params.put("deletedBook", bookService.deleteBookById(id));
 		return "bookDeleted";
@@ -46,17 +46,5 @@ public class BookController {
 		BookTo bookTo = new BookTo(null, title, authors);
 		params.put("insertedBook", bookService.saveBook(bookTo));
 		return "bookInserted";
-	}
-
-	@RequestMapping(value = "/find", method = RequestMethod.GET)
-	public String findBooksByTitle(@RequestParam("titlePrefix") String titlePrefix, Map<String, Object> params) {
-		final List<BookTo> foundBooks = bookService.findBooksByTitle(titlePrefix);
-		final List<BookTo> foundBooks_2 = bookService.findBooksByAuthor(titlePrefix);
-		for (BookTo book : foundBooks_2) {
-			if (!foundBooks.contains(book))
-				foundBooks.add(book);
-		}
-		params.put("books", foundBooks);
-		return "bookTab";
 	}
 }
