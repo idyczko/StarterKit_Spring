@@ -49,8 +49,8 @@ public class BookRestServiceTest {
         // given
         final String bookTitle = "testTitle";
 
-        final BookTo bookTo1 = new BookTo(1L, bookTitle, "Author1");
-        final BookTo bookTo2 = new BookTo(2L, bookTitle, "Author2");
+        final BookTo bookTo1 = new BookTo(1L, bookTitle, "Author1", null, null);
+        final BookTo bookTo2 = new BookTo(2L, bookTitle, "Author2", null, null);
 
         Mockito.when(bookService.findBooksByTitle(bookTitle)).thenReturn(Arrays.asList(bookTo1, bookTo2));
 

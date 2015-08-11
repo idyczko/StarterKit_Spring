@@ -1,2 +1,4 @@
 pl\spring\demo\entity\AuthorEntity.class
+pl\spring\demo\entity\BookEntity.class
+pl\spring\demo\entity\LibraryEntity.class
 pl\spring\demo\to\BookTo.class

@@ -60,4 +60,8 @@ public class BookEntity implements Serializable {
 	public LibraryEntity getLibrary() {
 		return library;
 	}
+
+	public void setLibrary(LibraryEntity library) {
+		this.library = library;
+	}
 }
