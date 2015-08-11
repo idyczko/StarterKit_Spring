@@ -7,5 +7,7 @@
     <import resource="../common_configuration/CommonDatabase-context.xml"/>
 
     <bean id="bookDao" class="pl.spring.demo.dao.impl.BookDaoImpl" />
+    
+    <bean id="libraryDao" class="pl.spring.demo.dao.impl.LibraryDaoImpl" />
 
 </beans>

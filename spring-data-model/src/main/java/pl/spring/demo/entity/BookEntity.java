@@ -15,7 +15,7 @@ public class BookEntity implements Serializable {
 	@Column(nullable = false, length = 50)
 	private String title;
 
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	private LibraryEntity library;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -55,5 +55,9 @@ public class BookEntity implements Serializable {
 
 	public void setAuthors(Set<AuthorEntity> authors) {
 		this.authors = authors;
+	}
+
+	public LibraryEntity getLibrary() {
+		return library;
 	}
 }
