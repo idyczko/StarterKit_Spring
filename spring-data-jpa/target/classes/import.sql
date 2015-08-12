@@ -1,6 +1,6 @@
-insert into libraries values (1, 'Biblioteka Miejska');
-insert into libraries values (2, 'Biblioteka Publiczna');
-insert into libraries values (3, 'Biblioteka Wrocławska');
+insert into library values (1, 'Biblioteka Miejska');
+insert into library values (2, 'Biblioteka Publiczna');
+insert into library values (3, 'Biblioteka Wrocławska');
 
 insert into book values (1, 'Pierwsza książka',1);
 insert into book values (2, 'Druga książka',1);

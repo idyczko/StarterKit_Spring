@@ -5,6 +5,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import pl.spring.demo.criteria.BookSearchCriteria;
 import pl.spring.demo.entity.BookEntity;
 
 import java.util.List;
@@ -41,5 +43,19 @@ public class BookDaoImplTest {
         assertNotNull(booksEntity);
         assertFalse(booksEntity.isEmpty());
         assertEquals("Pierwsza książka", booksEntity.get(0).getTitle());
+    }
+    
+    @Test
+    public void testShouldFindBooksByBookSearchCriteria() {
+    	// given
+    	final String bookTitle = "pierw";
+    	BookSearchCriteria searchCriteria=new BookSearchCriteria();
+    	searchCriteria.setBookTitle(bookTitle);
+    	// when
+    	List<BookEntity> booksEntity = bookDao.findBooksByBookSearchCriteria(searchCriteria);
+    	// then
+    	assertNotNull(booksEntity);
+    	assertFalse(booksEntity.isEmpty());
+    	assertEquals("Pierwsza książka", booksEntity.get(0).getTitle());
     }
 }

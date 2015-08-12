@@ -1,6 +1,9 @@
 package pl.spring.demo.entity;
 
 import javax.persistence.*;
+
+import com.mysema.query.annotations.QueryEntity;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +19,7 @@ public class BookEntity implements Serializable {
 	private String title;
 
 	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="LIBRARY_ID", nullable=false)
 	private LibraryEntity library;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

@@ -1,4 +1,3 @@
-pl\spring\demo\entity\AuthorEntity.class
-pl\spring\demo\entity\BookEntity.class
-pl\spring\demo\entity\LibraryEntity.class
-pl\spring\demo\to\BookTo.class
+pl\spring\demo\entity\QAuthorEntity.class
+pl\spring\demo\entity\QBookEntity.class
+pl\spring\demo\entity\QLibraryEntity.class

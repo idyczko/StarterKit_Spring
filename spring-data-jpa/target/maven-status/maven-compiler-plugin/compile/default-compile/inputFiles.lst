@@ -5,6 +5,7 @@ C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\dem
 C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\repository\BookRepository.java
 C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\dao\BookDao.java
 C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\dao\impl\LibraryDaoImpl.java
+C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\criteria\BookSearchCriteria.java
 C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\dao\impl\BookDaoImpl.java
 C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\mapper\BookMapper.java
 C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\exception\NoLibraryFoundException.java

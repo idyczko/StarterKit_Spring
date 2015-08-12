@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "LIBRARIES")
+@Table(name = "LIBRARY")
 public class LibraryEntity implements Serializable {
 
     @Id

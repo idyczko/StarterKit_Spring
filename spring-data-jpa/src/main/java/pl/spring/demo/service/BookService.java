@@ -2,6 +2,7 @@ package pl.spring.demo.service;
 
 import java.util.List;
 
+import pl.spring.demo.criteria.BookSearchCriteria;
 import pl.spring.demo.repository.BookRepository;
 import pl.spring.demo.repository.LibraryRepository;
 import pl.spring.demo.to.BookTo;
@@ -19,4 +20,7 @@ public interface BookService {
 	LibraryRepository getLibraryRepository();
 
 	BookRepository getBookRepository();
+	
+
+
 }

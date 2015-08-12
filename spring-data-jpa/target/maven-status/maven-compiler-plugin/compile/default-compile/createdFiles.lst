@@ -1,11 +1,5 @@
-pl\spring\demo\repository\LibraryRepository.class
-pl\spring\demo\service\BookService.class
-pl\spring\demo\dao\LibraryDao.class
+pl\spring\demo\exception\NoLibraryFoundException.class
 pl\spring\demo\dao\Dao.class
-pl\spring\demo\dao\impl\LibraryDaoImpl.class
-pl\spring\demo\dao\BookDao.class
-pl\spring\demo\dao\impl\BookDaoImpl.class
-pl\spring\demo\mapper\BookMapper.class
-pl\spring\demo\service\impl\BookServiceImpl.class
-pl\spring\demo\repository\BookRepository.class
+pl\spring\demo\service\LibraryService.class
+pl\spring\demo\criteria\BookSearchCriteria.class
 pl\spring\demo\dao\impl\AbstractDao.class
