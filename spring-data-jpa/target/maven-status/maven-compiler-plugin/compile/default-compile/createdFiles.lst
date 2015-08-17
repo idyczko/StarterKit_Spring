@@ -1,5 +1,0 @@
-pl\spring\demo\exception\NoLibraryFoundException.class
-pl\spring\demo\dao\Dao.class
-pl\spring\demo\service\LibraryService.class
-pl\spring\demo\criteria\BookSearchCriteria.class
-pl\spring\demo\dao\impl\AbstractDao.class
