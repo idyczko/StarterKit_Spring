@@ -3,7 +3,7 @@ angular.module('app.books').controller('BookSearchController', function ($scope,
 
     $scope.books = [];
     $scope.gridOptions = { data: 'books' };
-    $scope.prefix = undefined;
+    $scope.prefix = '';
 
     var removeBookById = function (bookId) {
         for (var i = 0; i < $scope.books.length; i = i + 1) {
@@ -17,6 +17,8 @@ angular.module('app.books').controller('BookSearchController', function ($scope,
     $scope.search = function () {
         bookService.search($scope.prefix).then(function (response) {
             angular.copy(response.data, $scope.books);
+        }, function () {
+            Flash.create('danger', 'Wyjątek', 'custom-class');
         });
     };
 

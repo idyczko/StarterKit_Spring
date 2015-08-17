@@ -10,4 +10,5 @@ java/target
 .project
 .sonar
 *.bak
+target
 
