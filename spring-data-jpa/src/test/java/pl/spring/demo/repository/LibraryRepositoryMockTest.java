@@ -1,4 +1,4 @@
-package pl.spring.demo.service;
+package pl.spring.demo.repository;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,10 +10,7 @@ import org.mockito.MockitoAnnotations;
 import pl.spring.demo.repository.LibraryRepository;
 import pl.spring.demo.service.impl.LibraryServiceImpl;
 
-public class LibraryServiceTest {
-
-	@InjectMocks
-	private LibraryServiceImpl libraryService;
+public class LibraryRepositoryMockTest {
 
 	@Mock
 	private LibraryRepository libraryRepository;

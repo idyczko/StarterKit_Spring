@@ -18,10 +18,10 @@ public class LibraryServiceImpl implements LibraryService {
 	@Override
 	@Transactional(readOnly = false)
 	public Long deleteLibrary(Long id) throws IllegalArgumentException, NoLibraryFoundException{
-		if(id.equals(null)){
+		if(id==null){
 			throw new IllegalArgumentException();
 		}
-		if(libraryRepository.getOne(id).equals(null)){
+		if(libraryRepository.getOne(id)==null){
 			throw new NoLibraryFoundException();
 		}
 		libraryRepository.delete(id);

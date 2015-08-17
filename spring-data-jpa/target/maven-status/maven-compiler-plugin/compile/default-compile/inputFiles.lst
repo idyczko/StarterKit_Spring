@@ -3,6 +3,8 @@ C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\dem
 C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\dao\LibraryDao.java
 C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\dao\Dao.java
 C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\repository\BookRepository.java
+C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\repository\CustomBookRepository.java
+C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\repository\impl\BookRepositoryImpl.java
 C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\dao\BookDao.java
 C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\dao\impl\LibraryDaoImpl.java
 C:\Users\idyczko\Desktop\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\criteria\BookSearchCriteria.java

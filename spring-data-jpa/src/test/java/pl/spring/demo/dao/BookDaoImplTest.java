@@ -46,7 +46,7 @@ public class BookDaoImplTest {
     }
     
     @Test
-    public void testShouldFindBooksByBookSearchCriteria() {
+    public void testShouldFindBooksByBookSearchCriteria_TitleOnly() {
     	// given
     	final String bookTitle = "pierw";
     	BookSearchCriteria searchCriteria=new BookSearchCriteria();
@@ -57,5 +57,80 @@ public class BookDaoImplTest {
     	assertNotNull(booksEntity);
     	assertFalse(booksEntity.isEmpty());
     	assertEquals("Pierwsza książka", booksEntity.get(0).getTitle());
+    }
+   
+    @Test
+    public void testShouldFindBooksByBookSearchCriteria_AuthorOnly() {
+    	// given
+    	final String bookAuthor = "Ja";
+    	BookSearchCriteria searchCriteria=new BookSearchCriteria();
+    	searchCriteria.setBookAuthor(bookAuthor);
+    	// when
+    	List<BookEntity> booksEntity = bookDao.findBooksByBookSearchCriteria(searchCriteria);
+    	// then
+    	assertNotNull(booksEntity);
+    	assertFalse(booksEntity.isEmpty());
+    	assertEquals("Pierwsza książka", booksEntity.get(0).getTitle());
+    }
+  
+    @Test
+    public void testShouldFindBooksByBookSearchCriteria_LibraryOnly() {
+    	// given
+    	final String bookLibrary = "Bibl";
+    	BookSearchCriteria searchCriteria=new BookSearchCriteria();
+    	searchCriteria.setLibraryName(bookLibrary);
+    	// when
+    	List<BookEntity> booksEntity = bookDao.findBooksByBookSearchCriteria(searchCriteria);
+    	// then
+    	assertNotNull(booksEntity);
+    	assertFalse(booksEntity.isEmpty());
+    	assertEquals("Pierwsza książka", booksEntity.get(0).getTitle());
+    }
+   
+    @Test
+    public void testShouldFindBooksByBookSearchCriteria_TitleAndAuthor() {
+    	// given
+    	final String bookTitle = "pierw";
+    	final String bookAuthor = "jA";
+    	BookSearchCriteria searchCriteria=new BookSearchCriteria();
+    	searchCriteria.setBookAuthor(bookAuthor);
+    	searchCriteria.setBookTitle(bookTitle);
+    	// when
+    	List<BookEntity> booksEntity = bookDao.findBooksByBookSearchCriteria(searchCriteria);
+    	// then
+    	assertNotNull(booksEntity);
+    	assertFalse(booksEntity.isEmpty());
+    	assertEquals("Pierwsza książka", booksEntity.get(0).getTitle());
+    }
+   
+    @Test
+    public void testShouldFindBooksByWholeBookSearchCriteria() {
+    	// given
+    	final String bookTitle = "pierw";
+    	final String bookAuthor = "jA";
+    	final String bookLibrary = "Bibl";
+    	BookSearchCriteria searchCriteria=new BookSearchCriteria();
+    	searchCriteria.setBookAuthor(bookAuthor);
+    	searchCriteria.setBookTitle(bookTitle);
+    	searchCriteria.setLibraryName(bookLibrary);
+    	// when
+    	List<BookEntity> booksEntity = bookDao.findBooksByBookSearchCriteria(searchCriteria);
+    	// then
+    	assertNotNull(booksEntity);
+    	assertFalse(booksEntity.isEmpty());
+    	assertEquals("Pierwsza książka", booksEntity.get(0).getTitle());
+    }
+  
+    @Test
+    public void testShouldFindAllBooksByEmptyBookSearchCriteria() {
+    	// given
+    	BookSearchCriteria searchCriteria=new BookSearchCriteria();
+    	long size= bookDao.count();
+    	// when
+    	List<BookEntity> booksEntity = bookDao.findBooksByBookSearchCriteria(searchCriteria);
+    	// then
+    	assertNotNull(booksEntity);
+    	assertFalse(booksEntity.isEmpty());
+    	assertEquals(size, booksEntity.size());
     }
 }

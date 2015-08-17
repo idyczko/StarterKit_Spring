@@ -20,6 +20,8 @@ public interface BookService {
 	LibraryRepository getLibraryRepository();
 
 	BookRepository getBookRepository();
+
+	List<BookTo> findBooksByBookSearchCriteria(BookSearchCriteria searchCriteria);
 	
 
 
