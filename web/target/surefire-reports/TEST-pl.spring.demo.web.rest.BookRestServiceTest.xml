@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pl.spring.demo.web.rest.BookRestServiceTest" time="0.357" tests="2" errors="0" skipped="0" failures="0">
+<testsuite name="pl.spring.demo.web.rest.BookRestServiceTest" time="0.223" tests="2" errors="0" skipped="0" failures="1">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_51\jre\bin"/>
@@ -27,7 +27,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="C:\Users\idyczko\Desktop\Igor\eclipse_projects\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf9052226997938057558.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\idyczko\Desktop\Igor\eclipse_projects\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf8490143440563788741.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_51\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\GitExtensions\;C:\Program Files\nodejs\;C:\Program Files\apache-maven-3.3.3\bin;C:\Users\idyczko\AppData\Roaming\npm;C:\Program Files (x86)\Git\bin;C:\Program Files (x86)\Git\cmd;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -62,6 +62,38 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="testShouldCallBookService" classname="pl.spring.demo.web.rest.BookRestServiceTest" time="0.289"/>
-  <testcase name="testShouldSaveBook" classname="pl.spring.demo.web.rest.BookRestServiceTest" time="0.068"/>
+  <testcase name="testShouldCallBookService" classname="pl.spring.demo.web.rest.BookRestServiceTest" time="0.183">
+    <failure message="JSON path [0].authors expected:&lt;{&quot;firstName&quot;:&quot;Author1&quot;,&quot;lastName&quot;:&quot;Author1&quot;,&quot;id&quot;:1}&gt; but was:&lt;{&quot;firstName&quot;:&quot;Author1&quot;,&quot;lastName&quot;:&quot;Author1&quot;,&quot;id&quot;:1}&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: JSON path [0].authors expected:<{"firstName":"Author1","lastName":"Author1","id":1}> but was:<{"firstName":"Author1","lastName":"Author1","id":1}>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:60)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:89)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:131)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers$2.match(JsonPathResultMatchers.java:68)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:152)
+	at pl.spring.demo.web.rest.BookRestServiceTest.testShouldCallBookService(BookRestServiceTest.java:70)
+]]></failure>
+    <system-out><![CDATA[2015-08-19 17:40:46,653 INFO org.springframework.test.context.support.AbstractContextLoader - Detected default resource location "classpath:pl/spring/demo/web/rest/BookRestServiceTest-context.xml" for test class [pl.spring.demo.web.rest.BookRestServiceTest]
+2015-08-19 17:40:46,655 INFO org.springframework.test.context.support.AbstractDelegatingSmartContextLoader - GenericXmlWebContextLoader detected default locations for context configuration [ContextConfigurationAttributes@631330c declaringClass = 'pl.spring.demo.web.rest.BookRestServiceTest', classes = '{}', locations = '{classpath:pl/spring/demo/web/rest/BookRestServiceTest-context.xml}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.test.context.ContextLoader'].
+2015-08-19 17:40:46,656 INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [pl.spring.demo.web.rest.BookRestServiceTest]: BookRestServiceTest does not declare any static, non-private, non-final, inner classes annotated with @Configuration.
+2015-08-19 17:40:46,664 INFO org.springframework.test.context.web.WebTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2015-08-19 17:40:46,678 INFO org.springframework.test.context.web.WebTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5c072e3f, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@4d1b0d2a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@954b04f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@149494d8, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@710726a3]
+2015-08-19 17:40:46,683 INFO org.springframework.test.context.support.AbstractContextLoader - Detected default resource location "classpath:pl/spring/demo/web/rest/BookRestServiceTest-context.xml" for test class [pl.spring.demo.web.rest.BookRestServiceTest]
+2015-08-19 17:40:46,683 INFO org.springframework.test.context.support.AbstractDelegatingSmartContextLoader - GenericXmlWebContextLoader detected default locations for context configuration [ContextConfigurationAttributes@5204062d declaringClass = 'pl.spring.demo.web.rest.BookRestServiceTest', classes = '{}', locations = '{classpath:pl/spring/demo/web/rest/BookRestServiceTest-context.xml}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.test.context.ContextLoader'].
+2015-08-19 17:40:46,683 INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [pl.spring.demo.web.rest.BookRestServiceTest]: BookRestServiceTest does not declare any static, non-private, non-final, inner classes annotated with @Configuration.
+2015-08-19 17:40:46,684 INFO org.springframework.test.context.web.WebTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2015-08-19 17:40:46,684 INFO org.springframework.test.context.web.WebTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@b3d7190, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5fdba6f9, org.springframework.test.context.support.DirtiesContextTestExecutionListener@10d59286, org.springframework.test.context.transaction.TransactionalTestExecutionListener@fe18270, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6fb0d3ed]
+2015-08-19 17:40:46,747 INFO org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [pl/spring/demo/web/rest/BookRestServiceTest-context.xml]
+2015-08-19 17:40:46,809 INFO org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [configuration/mvc-configuration.xml]
+2015-08-19 17:40:46,885 INFO org.springframework.web.context.support.GenericWebApplicationContext - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@6c9f5c0d: startup date [Wed Aug 19 17:40:46 CEST 2015]; root of context hierarchy
+2015-08-19 17:40:47,251 INFO org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/books-by-title],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.util.List<pl.spring.demo.to.BookTo> pl.spring.demo.web.rest.BookRestService.findBooksByTitle(java.lang.String)
+2015-08-19 17:40:47,251 INFO org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/book],methods=[POST],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public pl.spring.demo.to.BookTo pl.spring.demo.web.rest.BookRestService.saveBook(pl.spring.demo.to.BookTo)
+2015-08-19 17:40:47,251 INFO org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/book/{id}],methods=[DELETE],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void pl.spring.demo.web.rest.BookRestService.deleteBook(long)
+2015-08-19 17:40:47,336 INFO org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@6c9f5c0d: startup date [Wed Aug 19 17:40:46 CEST 2015]; root of context hierarchy
+2015-08-19 17:40:47,368 INFO org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@6c9f5c0d: startup date [Wed Aug 19 17:40:46 CEST 2015]; root of context hierarchy
+2015-08-19 17:40:47,398 INFO org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2015-08-19 17:40:47,567 INFO org.springframework.mock.web.MockServletContext - Initializing Spring FrameworkServlet ''
+2015-08-19 17:40:47,567 INFO org.springframework.test.web.servlet.TestDispatcherServlet - FrameworkServlet '': initialization started
+2015-08-19 17:40:47,582 INFO org.springframework.test.web.servlet.TestDispatcherServlet - FrameworkServlet '': initialization completed in 15 ms
+]]></system-out>
+  </testcase>
+  <testcase name="testShouldSaveBook" classname="pl.spring.demo.web.rest.BookRestServiceTest" time="0.04"/>
 </testsuite>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------------------
 Test set: pl.spring.demo.web.rest.BookRestServiceTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.965 sec - in pl.spring.demo.web.rest.BookRestServiceTest
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.046 sec <<< FAILURE! - in pl.spring.demo.web.rest.BookRestServiceTest
+testShouldCallBookService(pl.spring.demo.web.rest.BookRestServiceTest)  Time elapsed: 0.183 sec  <<< FAILURE!
+java.lang.AssertionError: JSON path [0].authors expected:<{"firstName":"Author1","lastName":"Author1","id":1}> but was:<{"firstName":"Author1","lastName":"Author1","id":1}>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:60)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:89)
+	at org.springframework.test.util.JsonPathExpectationsHelper.assertValue(JsonPathExpectationsHelper.java:131)
+	at org.springframework.test.web.servlet.result.JsonPathResultMatchers$2.match(JsonPathResultMatchers.java:68)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:152)
+	at pl.spring.demo.web.rest.BookRestServiceTest.testShouldCallBookService(BookRestServiceTest.java:70)
+
