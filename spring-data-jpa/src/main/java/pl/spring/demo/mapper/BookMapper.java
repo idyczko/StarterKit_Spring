@@ -12,20 +12,9 @@ public class BookMapper {
 
 	public static BookTo map(BookEntity bookEntity) {
 		if (bookEntity != null) {
-			return new BookTo(bookEntity.getId(), bookEntity.getTitle(), convertSetToString(bookEntity.getAuthors()));
+			return new BookTo(bookEntity.getId(), bookEntity.getTitle(), bookEntity.getAuthors());
 		}
 		return null;
-	}
-
-	private static String convertSetToString(Set<AuthorEntity> authors) {
-		String authorsInString = "";
-		for(AuthorEntity author: authors){
-			authorsInString+=author.getFirstName();
-			authorsInString+=" ";
-			authorsInString+=author.getLastName();
-			authorsInString+=" ";
-		}
-		return authorsInString;
 	}
 
 	public static BookEntity map(BookTo bookTo) {
