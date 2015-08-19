@@ -20,7 +20,7 @@ public class BookRepositoryTest {
     @Test
     public void testShouldFindBookById() {
         // given
-        final long bookId = 1;
+        final long bookId = 1L;
         // when
         BookEntity bookEntity = bookRepository.findOne(bookId);
         // then

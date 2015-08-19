@@ -5,6 +5,7 @@ angular.module('app.books', ['ngRoute']).config(function ($routeProvider) {
         controller: 'BookSearchController'
     });
     $routeProvider.when('/books/add-book', {
+    	controller: 'BookSaveController',
         templateUrl: 'books/html/add-book.html'
     });
 });
