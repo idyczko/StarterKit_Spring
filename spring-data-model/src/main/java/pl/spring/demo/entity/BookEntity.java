@@ -14,7 +14,7 @@ public class BookEntity implements Serializable {
     @Column(nullable = false, length = 50)
     private String title;
 	
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "BOOK_AUTHOR", joinColumns = {
 			@JoinColumn(name = "BOOK_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "AUTHOR_ID", nullable = false, updatable = false) })
@@ -30,7 +30,13 @@ public class BookEntity implements Serializable {
         this.title = title;
     }
 
-    public Long getId() {
+    public BookEntity(Long id, String title, Set<AuthorEntity> authors) {
+    	this.id = id;
+        this.title = title;
+        this.authors=authors;
+	}
+
+	public Long getId() {
         return id;
     }
 

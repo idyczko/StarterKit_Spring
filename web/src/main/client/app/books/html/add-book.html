@@ -2,17 +2,28 @@
 <html>
 <body>
 	<section>
-		<p>TODO dialog umożliwiający dodanie i zapisanie nowej książki</p>
 		<p>Hello</p>
-	
-<div flash-message="5000"></div>
-		<p>Podaj tytuł książki:</p>
-		<input type="text" ng-model="id"> <input type="text"
-			ng-model="title"> <input type="text"
-			ng-model="authorFirstName"> <input type="text"
-			ng-model="authorLastName">
-		<button ng-click="save()">Dodaj książkę</button>
 
+		<div flash-message="5000"></div>
+		<p>Podaj tytuł książki:</p>
+		<input type="text" ng-model="title">
+		<button ng-click="addAuthor()">Dodaj autora</button>
+		<button ng-click="save()">Zapisz książkę</button>
+		<p>Dodani autorzy:</p>
+		<table>
+			<tr>
+				<th>Imię‚</th>
+				<th>Nazwisko‚</th>
+				<th>Usuń</th>
+			</tr>
+			<tr ng-repeat="author in authors">
+				<td>{{ author.firstName }}</td>
+				<td>{{ author.lastName }}</td>
+				<td>
+					<button ng-click="removeAuthor(author.id)">Usuń</button>
+				</td>
+			</tr>
+		</table>
 	</section>
 </body>
 </html>

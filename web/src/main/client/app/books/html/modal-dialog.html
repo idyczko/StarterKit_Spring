@@ -1,0 +1,16 @@
+<div>
+    <form novalidate>
+        <div class="modal-header">
+            <h3 class="modal-title">Dodaj autora</h3>
+        </div>
+        <div class="modal-body">
+  <input type="text"
+			ng-model="firstName"> <input type="text"
+			ng-model="lastName">
+        </div>
+        <div class="modal-footer">
+		<button class="btn" ng-click="$close({'id':id, 'firstName':firstName, 'lastName':lastName})">Dodaj autora</button>
+            <button class="btn btn-warning" ng-click="$dismiss()">Wyjdź</button>
+        </div>
+    </form>
+</div> 
