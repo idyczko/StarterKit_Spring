@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<section>
+		<div flash-message="5000"></div>
+
+		<p>Szukany autor:</p>
+		<input type="text" ng-model="prefix">
+		<p></p>
+		<p>Pasujący autorzy:</p>
+		<table>
+			<tr>
+				<th>Imię,</th>
+				<th>Nazwisko,</th>
+			</tr>
+			<tr ng-repeat="author in authors | filter:prefix:check">
+				<td>{{author.firstName}}</td>
+				<td>{{author.lastName}}</td>
+			</tr>
+		</table>
+	</section>
+</body>
+</html>

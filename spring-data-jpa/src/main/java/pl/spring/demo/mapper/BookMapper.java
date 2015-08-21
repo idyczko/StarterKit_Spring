@@ -1,11 +1,9 @@
 package pl.spring.demo.mapper;
 
-import pl.spring.demo.entity.AuthorEntity;
 import pl.spring.demo.entity.BookEntity;
 import pl.spring.demo.to.BookTo;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BookMapper {

@@ -1,6 +1,6 @@
 angular.module('app.books').controller(
 		'BookSearchController',
-		function($scope, $window, $location, bookService, Flash) {
+		function($scope, $window, $location, bookService, bookSaveService, Flash, $modal) {
 			'use strict';
 
 			$scope.books = [];
@@ -16,19 +16,6 @@ angular.module('app.books').controller(
 						break;
 					}
 				}
-			};
-
-			$scope.authorsParser = function(authors) {
-				var authorsString=' ';
-				for ( var i=0; i<authors.length;i++) {
-					authorsString += authors[i].firstName;
-					authorsString += ' ';
-					authorsString += authors[i].lastName;
-					if(i<authors.length-1){
-					authorsString += ', ';
-					}
-				}
-				return authorsString;
 			};
 
 			$scope.search = function() {
@@ -52,6 +39,22 @@ angular.module('app.books').controller(
 
 			$scope.addBook = function() {
 				$location.url('/books/add-book');
+			};
+			
+			$scope.update = function(book) {
+				$modal.open({
+					templateUrl : 'books/html/update-modal.html',
+					controller : 'UpdateModalController',
+					size : '0.5g'
+				}).result.then(function(result) {
+						book.title=result;
+						bookSaveService.save(book).then(function() {
+							Flash.create('success',
+									'Książka została pomyślnie zaktualizowana.',
+									'custom-class');
+						});
+				});
+				
 			};
 
 		});

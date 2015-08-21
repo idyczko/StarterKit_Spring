@@ -9,7 +9,7 @@
 			ng-model="lastName">
         </div>
         <div class="modal-footer">
-		<button class="btn" ng-click="$close({'id':id, 'firstName':firstName, 'lastName':lastName})">Dodaj autora</button>
+		<button class="btn" ng-disabled="firstName.length===0 || lastName.length===0" ng-click="$close({'firstName':firstName, 'lastName':lastName})">Dodaj autora</button>
             <button class="btn btn-warning" ng-click="$dismiss()">Wyjdź</button>
         </div>
     </form>

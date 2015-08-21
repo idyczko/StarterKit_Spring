@@ -14,12 +14,16 @@
 				<th>Tytuł</th>
 				<th>Autorzy</th>
 				<th>Usuń</th>
+				<th>Aktualizuj</th>
 			</tr>
 			<tr ng-repeat="book in books">
 				<td>{{ book.title }}</td>
-				<td>{{authorsParser(book.authors)}}</td>
+				<td>{{book.authors | authors}}</td>
 				<td>
 					<button ng-click="deleteBook(book.id)">Usuń</button>
+				</td>
+				<td>
+					<button ng-click="update(book)">Aktualizuj</button>
 				</td>
 			</tr>
 		</table>

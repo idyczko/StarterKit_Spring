@@ -6,9 +6,9 @@
 
 		<div flash-message="5000"></div>
 		<p>Podaj tytuł książki:</p>
-		<input type="text" ng-model="title">
+		<input type="text" ng-model="title" ng-required="true">
 		<button ng-click="addAuthor()">Dodaj autora</button>
-		<button ng-click="save()">Zapisz książkę</button>
+		<button ng-click="save()" ng-disabled="title.length===0">Zapisz książkę</button>
 		<p>Dodani autorzy:</p>
 		<table>
 			<tr>

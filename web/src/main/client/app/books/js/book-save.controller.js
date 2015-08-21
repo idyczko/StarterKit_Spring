@@ -6,7 +6,6 @@ angular.module('app.books').controller(
 			$scope.gridOptions = {
 				data : 'books'
 			};
-			$scope.id = 0;
 			$scope.title = '';
 			$scope.authors = [];
 			$scope.addAuthor = function() {
@@ -17,7 +16,6 @@ angular.module('app.books').controller(
 				}).result.then(function(result) {
 					if (result.firstName !== '' && result.lastName !== '') {
 						$scope.authors.push({
-							'id' : result.id,
 							'firstName' : result.firstName,
 							'lastName' : result.lastName
 						});
@@ -35,7 +33,6 @@ angular.module('app.books').controller(
 			$scope.save = function() {
 				if ($scope.authors.length !== 0) {
 					bookSaveService.save({
-						'id' : $scope.id,
 						'title' : $scope.title,
 						'authors' : $scope.authors
 					}).then(

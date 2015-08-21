@@ -8,6 +8,8 @@
     "modules": [
         "main",
         "books",
+        "authors",
+        "myCustomFilters",
         "component-1",
         "component-2"
     ],
