@@ -8,23 +8,26 @@ angular.module('app.books').controller(
 			};
 			$scope.title = '';
 			$scope.authors = [];
-			$scope.addAuthor = function() {
-				$modal.open({
+			$scope.instantiateModal = function() {
+				return $modal.open({
 					templateUrl : 'books/html/modal-dialog.html',
 					controller : 'BookModalController',
 					size : '0.5g'
-				}).result.then(function(result) {
-					if (result.firstName !== '' && result.lastName !== '') {
-						$scope.authors.push({
-							'firstName' : result.firstName,
-							'lastName' : result.lastName
-						});
-					}
 				});
 			};
-			$scope.removeAuthor = function(authorId) {
+
+			$scope.addAuthor = function() {
+				$scope.instantiateModal().result.then(function(result) {
+					$scope.authors.push({
+						'firstName' : result.firstName,
+						'lastName' : result.lastName
+					});
+				});
+			};
+
+			$scope.removeAuthor = function(authorIndex) {
 				for (var i = 0; i < $scope.authors.length; i = i + 1) {
-					if ($scope.authors[i].id === authorId) {
+					if (i === authorIndex) {
 						$scope.authors.splice(i, 1);
 						break;
 					}
@@ -39,6 +42,10 @@ angular.module('app.books').controller(
 							function() {
 								Flash.create('success',
 										'Książka została pomyślnie dodana.',
+										'custom-class');
+							},
+							function() {
+								Flash.create('danger', 'Wyjątek',
 										'custom-class');
 							});
 				} else {

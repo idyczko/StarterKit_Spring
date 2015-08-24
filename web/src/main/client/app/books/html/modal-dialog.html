@@ -1,16 +1,24 @@
 <div>
-    <form novalidate>
-        <div class="modal-header">
-            <h3 class="modal-title">Dodaj autora</h3>
-        </div>
-        <div class="modal-body">
-  <input type="text"
-			ng-model="firstName"> <input type="text"
-			ng-model="lastName">
-        </div>
-        <div class="modal-footer">
-		<button class="btn" ng-disabled="firstName.length===0 || lastName.length===0" ng-click="$close({'firstName':firstName, 'lastName':lastName})">Dodaj autora</button>
-            <button class="btn btn-warning" ng-click="$dismiss()">Wyjdź</button>
-        </div>
-    </form>
-</div> 
+	<form novalidate>
+		<div class="modal-header">
+			<h3 class="modal-title">Dodaj nowego autora</h3>
+		</div>
+		<div class="modal-body">
+			<p>Imię:</p>
+			<p>
+				<input type="text" ng-model="firstName">
+			</p>
+			<p>Nazwisko:</p>
+			<p>
+				<input type="text" ng-model="lastName">
+			</p>
+		</div>
+		<div class="modal-footer">
+			<button class="btn"
+				ng-disabled="firstName.length===0 || lastName.length===0"
+				ng-click="$close({'firstName':firstName, 'lastName':lastName})">Dodaj
+				autora</button>
+			<button class="btn btn-warning" ng-click="$dismiss()">Wyjdź</button>
+		</div>
+	</form>
+</div>

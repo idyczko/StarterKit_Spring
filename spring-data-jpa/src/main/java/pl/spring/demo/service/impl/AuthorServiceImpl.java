@@ -25,11 +25,5 @@ public class AuthorServiceImpl implements AuthorService {
 		return AuthorMapper.map2To(new HashSet<AuthorEntity>(authorRepository.findAll()));
 	}
 
-	@Override
-	@Transactional(readOnly = false)
-	public void deleteAuthor(long id) {
-		authorRepository.delete(id);
-
-	}
 
 }

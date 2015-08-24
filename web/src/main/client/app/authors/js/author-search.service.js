@@ -4,9 +4,6 @@ angular.module('app.authors').factory('authorService', function (authorRestServi
     return {
         search: function () {
             return authorRestService.search();
-        },
-        deleteAuthor: function (authorId) {
-            return authorRestService.deleteAuthor(authorId);
         }
     };
 });

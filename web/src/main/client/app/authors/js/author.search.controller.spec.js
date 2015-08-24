@@ -1,0 +1,52 @@
+describe('author controller', function () {
+    'use strict';
+
+    beforeEach(function () {
+        module('app.main');
+        module('flash');
+        module('app.authors');
+    });
+
+    var $scope;
+    beforeEach(inject(function ($rootScope) {
+        $scope = $rootScope.$new();
+    }));
+
+    it('author search is defined', inject(function ($controller) {
+        // when
+        $controller('AuthorSearchController', {$scope: $scope});
+        // then
+        expect($scope.search).toBeDefined();
+    }));
+
+    it('search should be called automatically', inject(function ($controller, $q, authorService) {
+        // given
+    	var searchDeferred = $q.defer();
+    	spyOn(authorService, 'search').and.returnValue(searchDeferred.promise);
+        $controller('AuthorSearchController', {$scope: $scope});
+
+        // when
+        searchDeferred.resolve({data:[{id:2, firstName:'test', lastName:'test'}]});
+        $scope.$digest();
+        // then
+        expect(authorService.search).toHaveBeenCalled();
+        expect($scope.authors.length).toBe(1);
+    }));
+   
+    it('search should cause flash allert for promise rejection', inject(function ($controller, $q, authorService, Flash) {
+    	// given
+    	var searchDeferred = $q.defer();
+    	spyOn(authorService, 'search').and.returnValue(searchDeferred.promise);
+    	$controller('AuthorSearchController', {$scope: $scope});
+    	spyOn(Flash, 'create');
+    	// when
+    	searchDeferred.reject();
+    	$scope.$digest();
+    	// then
+    	expect(authorService.search).toHaveBeenCalled();
+    	expect(Flash.create).toHaveBeenCalledWith('danger', 'Wyjątek', 'custom-class');
+    	expect($scope.authors.length).toBe(0);
+    }));
+ 
+    
+});

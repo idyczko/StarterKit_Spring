@@ -7,5 +7,5 @@ import pl.spring.demo.to.AuthorTo;
 public interface AuthorService {
 	
 	Set<AuthorTo> findAllAuthors();
-    void deleteAuthor(long id);
+
 }

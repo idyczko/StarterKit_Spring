@@ -22,8 +22,4 @@ public class AuthorRestService {
 		return authorService.findAllAuthors();
 	}
 
-	@RequestMapping(value = "/author/{id}", method = RequestMethod.DELETE)
-	public void deleteAuthor(@PathVariable("id") long id) {
-		authorService.deleteAuthor(id);
-	}
 }

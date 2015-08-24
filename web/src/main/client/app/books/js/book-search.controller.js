@@ -4,11 +4,15 @@ angular.module('app.books').controller(
 			'use strict';
 
 			$scope.books = [];
+			$scope.prefix = '';
 			$scope.gridOptions = {
 				data : 'books'
 			};
-			$scope.prefix = '';
-
+			$scope.instantiateModal=function(){return $modal.open({
+				templateUrl : 'books/html/update-modal.html',
+				controller : 'UpdateModalController',
+				size : '0.5g'
+			});};
 			var removeBookById = function(bookId) {
 				for (var i = 0; i < $scope.books.length; i = i + 1) {
 					if ($scope.books[i].id === bookId) {
@@ -42,17 +46,16 @@ angular.module('app.books').controller(
 			};
 			
 			$scope.update = function(book) {
-				$modal.open({
-					templateUrl : 'books/html/update-modal.html',
-					controller : 'UpdateModalController',
-					size : '0.5g'
-				}).result.then(function(result) {
-						book.title=result;
-						bookSaveService.save(book).then(function() {
+				$scope.instantiateModal().result.then(function(result) {
+						var bookToSave={id: book.id, title: result, authors: book.authors};
+						bookSaveService.save(bookToSave).then(function() {
+							book.title=bookToSave.title;
 							Flash.create('success',
 									'Książka została pomyślnie zaktualizowana.',
 									'custom-class');
-						});
+						}, function() {
+							Flash.create('danger', 'Wyjątek', 'custom-class');
+						} );
 				});
 				
 			};

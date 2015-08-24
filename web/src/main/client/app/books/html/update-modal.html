@@ -1,15 +1,17 @@
 <div>
-    <form novalidate>
-        <div class="modal-header">
-            <h3 class="modal-title">Podaj nowy tytuł:</h3>
-        </div>
-        <div class="modal-body">
-   <input type="text"
-			ng-model="newTitle">
-        </div>
-        <div class="modal-footer">
-		<button class="btn" ng-disabled="newTitle.length===0" ng-click="$close(newTitle)">Zaktualizuj</button>
-            <button class="btn btn-warning" ng-click="$dismiss()">Wyjdź</button>
-        </div>
-    </form>
-</div> 
+	<form novalidate>
+		<div class="modal-header">
+			<h3 class="modal-title">Aktualizacja książki</h3>
+		</div>
+		<div class="modal-body">
+			<p>
+				Nowy tytuł: <input type="text" ng-model="newTitle">
+			</p>
+		</div>
+		<div class="modal-footer">
+			<button class="btn" ng-disabled="newTitle.length===0"
+				ng-click="$close(newTitle)">Zaktualizuj</button>
+			<button class="btn btn-warning" ng-click="$dismiss()">Wyjdź</button>
+		</div>
+	</form>
+</div>

@@ -8,15 +8,6 @@ angular.module('app.authors').controller(
 				data : 'authors'
 			};
 
-			var removeAuthorById = function(authorId) {
-				for (var i = 0; i < $scope.authors.length; i = i + 1) {
-					if ($scope.authors[i].id === authorId) {
-						$scope.authors.splice(i, 1);
-						break;
-					}
-				}
-			};
-
 			$scope.search = function() {
 				authorService.search().then(function(response) {
 					angular.copy(response.data, $scope.authors);
@@ -25,14 +16,6 @@ angular.module('app.authors').controller(
 				});
 			};
 			$scope.search();
-			$scope.deleteAuthor = function(authorId) {
-				authorService.deleteAuthor(authorId).then(
-						function() {
-							removeAuthorById(authorId);
-							Flash.create('success', 'Autor został usunięty.',
-									'custom-class');
-						});
-			};
 
 			$scope.check = function(actual, expected) {
 				var firstName = actual.firstName;
