@@ -23,17 +23,18 @@ describe('book save rest service', function () {
         // given
     	var bookToSave = {id: 1, title: 'test', authors: [{firstName:'test', lastName:'test'}]};
     	var httpBackend = $httpBackend;
-    	httpBackend.expect('POST', '/context.html/rest/books/book', bookToSave).respond(200, {data: bookToSave});
+    	httpBackend.expect('POST', '/context.html/rest/books/book', bookToSave).respond(200, bookToSave);
 
         // when
-    	var savePromise = bookSaveRestService.save(bookToSave);
-    	httpBackend.flush();
-    	
+
         // then
-    	savePromise.then(function(response) {
+    	bookSaveRestService.save(bookToSave).then(function(response) {
+    		console.log(response.status);
     		expect(response.status).toEqual(200);
     		expect(response.data).toEqual(bookToSave);  		
     	});
+    	
+    	httpBackend.flush();
     }));
 
 });

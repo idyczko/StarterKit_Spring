@@ -23,17 +23,17 @@ describe('author rest service', function () {
         // given
     	var authors= [{firstName:'test', lastName:'test'}];
     	var httpBackend = $httpBackend;
-    	httpBackend.expect('GET', '/context.html/rest/authors/authors').respond(200, {data: authors});
+    	httpBackend.expect('GET', '/context.html/rest/authors/authors').respond(200, authors);
     	
         // when
-    	var searchPromise = authorRestService.search();
-    	httpBackend.flush();
     	
         // then
-    	searchPromise.then(function(response) {
+    	authorRestService.search().then(function(response) {
     		expect(response.status).toEqual(200);
     		expect(response.data).toEqual(authors);  		
     	});
+    	
+    	httpBackend.flush();
     }));
 
 });
