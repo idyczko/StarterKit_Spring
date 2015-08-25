@@ -47,6 +47,13 @@ describe('book controller', function () {
     	// then
     	expect($scope.update).toBeDefined();
     }));
+ 
+    it('addBook is defined', inject(function ($controller) {
+    	// when
+    	$controller('BookSearchController', {$scope: $scope});
+    	// then
+    	expect($scope.addBook).toBeDefined();
+    }));
 
     it('delete book should call bookService.deleteBook', inject(function ($controller, $q, bookService, Flash) {
         // given
@@ -55,12 +62,15 @@ describe('book controller', function () {
         var bookId = 1;
         $scope.books = [{id: bookId, title: 'test'}];
         var deleteDeferred = $q.defer();
+        
         spyOn(bookService, 'deleteBook').and.returnValue(deleteDeferred.promise);
         spyOn(Flash, 'create');
+        
         // when
         $scope.deleteBook(bookId);
         deleteDeferred.resolve();
         $scope.$digest();
+        
         // then
         expect(bookService.deleteBook).toHaveBeenCalledWith(bookId);
         expect(Flash.create).toHaveBeenCalledWith('success', 'Książka została usunięta.', 'custom-class');
@@ -70,10 +80,11 @@ describe('book controller', function () {
     it('search should call bookService.search', inject(function ($controller, $q, bookService) {
     	// given
     	$controller('BookSearchController', {$scope: $scope});
-    	$scope.books=[];
-    	$scope.prefix='test';
     	var booksToReturn = [{id:3, title:'test', authors:[{id:2, firstName:'test', lastName:'test'}]}];
     	var searchDeferred = $q.defer();
+    	$scope.books=[];
+    	$scope.prefix='test';
+    	
     	spyOn(bookService, 'search').and.returnValue(searchDeferred.promise);
     	
     	// when
@@ -92,6 +103,7 @@ describe('book controller', function () {
     	$scope.prefix = 'test'; 
     	$scope.books=[];
     	var searchDeferred = $q.defer();
+    	
     	spyOn(bookService, 'search').and.returnValue(searchDeferred.promise);
     	spyOn(Flash, 'create');
     	
@@ -107,12 +119,12 @@ describe('book controller', function () {
     }));
   
     it('update should call bookSaveService.save', inject(function ($controller, $q, bookSaveService, $modal, Flash) {
-    	// given
-    	
+    	// given    	
     	$controller('BookSearchController', {$scope: $scope});
-        $scope.books = [{id: 1, title: 'test', authors:[{firstName:'test', lastName:'test'}]}];
-        var bookToUpdate = {id: 1, title:'test_updated', authors:[{firstName:'test', lastName:'test'}]};
+    	var bookToUpdate = {id: 1, title:'test_updated', authors:[{firstName:'test', lastName:'test'}]};
     	var updateDeferred = $q.defer();
+        $scope.books = [{id: 1, title: 'test', authors:[{firstName:'test', lastName:'test'}]}];
+        
     	spyOn(bookSaveService, 'save').and.returnValue(updateDeferred.promise);
     	spyOn($modal, 'open').and.returnValue(fakeModal);
     	spyOn(Flash, 'create');
@@ -132,12 +144,12 @@ describe('book controller', function () {
     }));
  
     it('update should cause flash allert if promise was rejected', inject(function ($controller, $q, bookSaveService, $modal, Flash) {
-    	// given
-   	
+    	// given 	
     	$controller('BookSearchController', {$scope: $scope});
-    	$scope.books = [{id: 1, title: 'test', authors:[{firstName:'test', lastName:'test'}]}];
     	var bookToUpdate = {id: 1, title:'test_updated', authors:[{firstName:'test', lastName:'test'}]};
     	var updateDeferred = $q.defer();
+    	$scope.books = [{id: 1, title: 'test', authors:[{firstName:'test', lastName:'test'}]}];
+    	
     	spyOn(bookSaveService, 'save').and.returnValue(updateDeferred.promise);
     	spyOn($modal, 'open').and.returnValue(fakeModal);
     	spyOn(Flash, 'create');
@@ -152,5 +164,18 @@ describe('book controller', function () {
     	expect(bookSaveService.save).toHaveBeenCalledWith(bookToUpdate);
     	expect(Flash.create).toHaveBeenCalledWith('danger', 'Wyjątek', 'custom-class');
     	expect($scope.books[0].title).toBe('test');
+    }));
+
+    it('addBook should call $location.url', inject(function ($controller, $location) {
+    	// given   	
+    	$controller('BookSearchController', {$scope: $scope});
+    	
+    	spyOn($location, 'url');
+    	
+    	// when
+    	$scope.addBook();
+    	
+    	// then
+    	expect($location.url).toHaveBeenCalledWith('/books/add-book');
     }));
 });

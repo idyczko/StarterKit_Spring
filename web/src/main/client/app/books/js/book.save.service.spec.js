@@ -22,9 +22,12 @@ describe('book save service', function () {
     it('save should call bookRestSaveService.save', inject(function (bookSaveService, bookSaveRestService) {
         // given
         var bookToSave = {id: 1, title: 'test', authors: [{firstName:'test', lastName:'test'}]};
+        
         spyOn(bookSaveRestService, 'save').and.returnValue(bookToSave);
+        
         // when
         bookSaveService.save(bookToSave);
+        
         // then
         expect(bookSaveRestService.save).toHaveBeenCalledWith(bookToSave);
     }));

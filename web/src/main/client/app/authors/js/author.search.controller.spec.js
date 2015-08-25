@@ -18,16 +18,25 @@ describe('author controller', function () {
         // then
         expect($scope.search).toBeDefined();
     }));
+  
+    it('author check is defined', inject(function ($controller) {
+    	// when
+    	$controller('AuthorSearchController', {$scope: $scope});
+    	// then
+    	expect($scope.check).toBeDefined();
+    }));
 
-    it('search should be called automatically', inject(function ($controller, $q, authorService) {
+    it('search should be called automatically when controller starts', inject(function ($controller, $q, authorService) {
         // given
-    	var searchDeferred = $q.defer();
+    	var searchDeferred = $q.defer();    	
     	spyOn(authorService, 'search').and.returnValue(searchDeferred.promise);
-        $controller('AuthorSearchController', {$scope: $scope});
+    
+    	$controller('AuthorSearchController', {$scope: $scope});
 
         // when
         searchDeferred.resolve({data:[{id:2, firstName:'test', lastName:'test'}]});
         $scope.$digest();
+        
         // then
         expect(authorService.search).toHaveBeenCalled();
         expect($scope.authors.length).toBe(1);
@@ -37,11 +46,15 @@ describe('author controller', function () {
     	// given
     	var searchDeferred = $q.defer();
     	spyOn(authorService, 'search').and.returnValue(searchDeferred.promise);
+   
     	$controller('AuthorSearchController', {$scope: $scope});
+
     	spyOn(Flash, 'create');
+    	
     	// when
     	searchDeferred.reject();
     	$scope.$digest();
+    	
     	// then
     	expect(authorService.search).toHaveBeenCalled();
     	expect(Flash.create).toHaveBeenCalledWith('danger', 'Wyjątek', 'custom-class');

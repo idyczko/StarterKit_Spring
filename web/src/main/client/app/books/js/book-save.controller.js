@@ -8,7 +8,8 @@ angular.module('app.books').controller(
 			};
 			$scope.title = '';
 			$scope.authors = [];
-			$scope.instantiateModal = function() {
+			
+			var instantiateModal = function() {
 				return $modal.open({
 					templateUrl : 'books/html/modal-dialog.html',
 					controller : 'BookModalController',
@@ -17,7 +18,7 @@ angular.module('app.books').controller(
 			};
 
 			$scope.addAuthor = function() {
-				$scope.instantiateModal().result.then(function(result) {
+				instantiateModal().result.then(function(result) {
 					$scope.authors.push({
 						'firstName' : result.firstName,
 						'lastName' : result.lastName
@@ -33,6 +34,7 @@ angular.module('app.books').controller(
 					}
 				}
 			};
+			
 			$scope.save = function() {
 				if ($scope.authors.length !== 0) {
 					bookSaveService.save({

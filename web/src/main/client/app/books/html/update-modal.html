@@ -4,13 +4,14 @@
 			<h3 class="modal-title">Aktualizacja książki</h3>
 		</div>
 		<div class="modal-body">
+			<p>Nowy tytuł:</p>
 			<p>
-				Nowy tytuł: <input type="text" ng-model="newTitle">
+				<input type="text" ng-model="newTitle" maxlength="50">
 			</p>
 		</div>
 		<div class="modal-footer">
 			<button class="btn" ng-disabled="newTitle.length===0"
-				ng-click="$close(newTitle)">Zaktualizuj</button>
+				ng-click="confirm()">Zaktualizuj</button>
 			<button class="btn btn-warning" ng-click="$dismiss()">Wyjdź</button>
 		</div>
 	</form>

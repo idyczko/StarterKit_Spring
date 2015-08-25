@@ -51,10 +51,10 @@ describe('book save controller', function () {
     it('save should call bookSaveService.save', inject(function ($controller, $q, bookSaveService, Flash) {
         // given
         $controller('BookSaveController', {$scope: $scope});
-
+        var saveDeferred = $q.defer();
         $scope.title='test';
         $scope.authors=[{firstName:'test', lastName:'test'}];
-        var saveDeferred = $q.defer();
+        
         spyOn(bookSaveService, 'save').and.returnValue(saveDeferred.promise);
         spyOn(Flash, 'create');
         
@@ -70,17 +70,19 @@ describe('book save controller', function () {
 
     it('save should cause flash allert if promise was rejected', inject(function ($controller, $q, bookSaveService, Flash) {
     	// given
-    	$controller('BookSaveController', {$scope: $scope});
-    	
+    	$controller('BookSaveController', {$scope: $scope});   	
+    	var saveDeferred = $q.defer();
     	$scope.title='test';
     	$scope.authors=[{firstName:'test', lastName:'test'}];
-    	var saveDeferred = $q.defer();
+    	
     	spyOn(bookSaveService, 'save').and.returnValue(saveDeferred.promise);
     	spyOn(Flash, 'create');
+    	
     	// when
     	$scope.save();
     	saveDeferred.reject();
     	$scope.$digest();
+    	
     	// then
     	expect(bookSaveService.save).toHaveBeenCalledWith({title:$scope.title, authors:$scope.authors});
     	expect(Flash.create).toHaveBeenCalledWith('danger', 'Wyjątek',
@@ -89,32 +91,35 @@ describe('book save controller', function () {
  
     it('save should cause flash allert if authors table is empty', inject(function ($controller, $q, Flash) {
     	// given
-    	$controller('BookSaveController', {$scope: $scope});
-    	
-    	$scope.authors=[];
+    	$controller('BookSaveController', {$scope: $scope}); 	
     	var saveDeferred = $q.defer();
+    	$scope.authors=[];
+    	
     	spyOn(Flash, 'create');
+    	
     	// when
     	$scope.save();
     	saveDeferred.resolve();
     	$scope.$digest();
+    	
     	// then
-
     	expect(Flash.create).toHaveBeenCalledWith('danger', 'Nie dodałeś żadnego autora!',
 		'custom-class');
     }));
 
     it('addAuthor should add new object to authors table', inject(function ($controller, $q, $modal) {
     	// given
-    	$controller('BookSaveController', {$scope: $scope});
-    	
-    	$scope.authors=[];
+    	$controller('BookSaveController', {$scope: $scope}); 	
     	var author ={firstName:'test', lastName:'test'};
+    	$scope.authors=[];
+    	
     	spyOn($modal, 'open').and.returnValue(fakeModal);
+    	
     	// when
     	$scope.addAuthor();
     	fakeModal.close(author);
     	$scope.$digest();
+    	
     	// then
     	expect($scope.authors.length).toBe(1);
     }));

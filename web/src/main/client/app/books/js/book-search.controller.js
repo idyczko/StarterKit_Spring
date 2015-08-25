@@ -8,11 +8,13 @@ angular.module('app.books').controller(
 			$scope.gridOptions = {
 				data : 'books'
 			};
-			$scope.instantiateModal=function(){return $modal.open({
+			
+			var instantiateModal=function(){return $modal.open({
 				templateUrl : 'books/html/update-modal.html',
 				controller : 'UpdateModalController',
 				size : '0.5g'
 			});};
+			
 			var removeBookById = function(bookId) {
 				for (var i = 0; i < $scope.books.length; i = i + 1) {
 					if ($scope.books[i].id === bookId) {
@@ -41,12 +43,9 @@ angular.module('app.books').controller(
 						});
 			};
 
-			$scope.addBook = function() {
-				$location.url('/books/add-book');
-			};
 			
 			$scope.update = function(book) {
-				$scope.instantiateModal().result.then(function(result) {
+				instantiateModal().result.then(function(result) {
 						var bookToSave={id: book.id, title: result, authors: book.authors};
 						bookSaveService.save(bookToSave).then(function() {
 							book.title=bookToSave.title;
@@ -58,6 +57,10 @@ angular.module('app.books').controller(
 						} );
 				});
 				
+			};
+
+			$scope.addBook = function() {
+				$location.url('/books/add-book');
 			};
 
 		});
