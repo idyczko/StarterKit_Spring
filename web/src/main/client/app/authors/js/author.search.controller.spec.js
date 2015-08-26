@@ -60,6 +60,32 @@ describe('author controller', function () {
     	expect(Flash.create).toHaveBeenCalledWith('danger', 'Wyjątek', 'custom-class');
     	expect($scope.authors.length).toBe(0);
     }));
+    
+    it('check should return true', inject(function ($controller, $q, authorService) {
+    	// given
+    	var searchDeferred = $q.defer();
+    	spyOn(authorService, 'search').and.returnValue(searchDeferred.promise);
+    	$controller('AuthorSearchController', {$scope: $scope});
+    	var author = {fistName: 'test', lastName: 'test'};
+    	
+    	// when
+    	
+    	// then
+    	expect($scope.check(author, 'test')).toEqual(true);
+    }));
+   
+    it('check should return false', inject(function ($controller, $q, authorService) {
+    	// given
+    	var searchDeferred = $q.defer();
+    	spyOn(authorService, 'search').and.returnValue(searchDeferred.promise);
+    	$controller('AuthorSearchController', {$scope: $scope});
+    	var author = {fistName: 'test', lastName: 'test'};
+    	
+    	// when
+    	
+    	// then
+    	expect($scope.check(author, 'some')).toEqual(false);
+    }));
  
     
 });
