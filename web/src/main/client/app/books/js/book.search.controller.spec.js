@@ -8,20 +8,6 @@ describe('book controller', function () {
     });
 
     var $scope;
-    var fakeModal = {
-		    result: {
-		        then: function(confirmCallback, cancelCallback) {
-		            this.confirmCallBack = confirmCallback;
-		            this.cancelCallback = cancelCallback;
-		        }
-		    },
-		    close: function( item ) {
-		        this.result.confirmCallBack( item );
-		    },
-		    dismiss: function( type ) {
-		        this.result.cancelCallback( type );
-		    }
-		};
     
     beforeEach(inject(function ($rootScope) {
         $scope = $rootScope.$new();
@@ -123,15 +109,16 @@ describe('book controller', function () {
     	$controller('BookSearchController', {$scope: $scope});
     	var bookToUpdate = {id: 1, title:'test_updated', authors:[{firstName:'test', lastName:'test'}]};
     	var updateDeferred = $q.defer();
+    	var modalDeferred = $q.defer();
         $scope.books = [{id: 1, title: 'test', authors:[{firstName:'test', lastName:'test'}]}];
         
     	spyOn(bookSaveService, 'save').and.returnValue(updateDeferred.promise);
-    	spyOn($modal, 'open').and.returnValue(fakeModal);
+    	spyOn($modal, 'open').and.returnValue({result: modalDeferred.promise});
     	spyOn(Flash, 'create');
     	
     	// when
     	$scope.update($scope.books[0]);
-    	fakeModal.close(bookToUpdate.title);
+    	modalDeferred.resolve(bookToUpdate.title);
     	updateDeferred.resolve();
     	$scope.$digest();
     	
@@ -148,21 +135,44 @@ describe('book controller', function () {
     	$controller('BookSearchController', {$scope: $scope});
     	var bookToUpdate = {id: 1, title:'test_updated', authors:[{firstName:'test', lastName:'test'}]};
     	var updateDeferred = $q.defer();
+    	var modalDeferred = $q.defer();
     	$scope.books = [{id: 1, title: 'test', authors:[{firstName:'test', lastName:'test'}]}];
     	
     	spyOn(bookSaveService, 'save').and.returnValue(updateDeferred.promise);
-    	spyOn($modal, 'open').and.returnValue(fakeModal);
+    	spyOn($modal, 'open').and.returnValue({result: modalDeferred.promise});
     	spyOn(Flash, 'create');
     	
     	// when
     	$scope.update($scope.books[0]);
-    	fakeModal.close(bookToUpdate.title);
+    	modalDeferred.resolve(bookToUpdate.title);
     	updateDeferred.reject();
     	$scope.$digest();
     	
     	// then
     	expect(bookSaveService.save).toHaveBeenCalledWith(bookToUpdate);
     	expect(Flash.create).toHaveBeenCalledWith('danger', 'Wyjątek', 'custom-class');
+    	expect($scope.books[0].title).toBe('test');
+    }));
+  
+    it('update should not call bookSaveService.save if modal was dismissed ', inject(function ($controller, $q, bookSaveService, $modal, Flash) {
+    	// given 	
+    	$controller('BookSearchController', {$scope: $scope});
+    	var updateDeferred = $q.defer();
+    	var modalDeferred = $q.defer();
+    	$scope.books = [{id: 1, title: 'test', authors:[{firstName:'test', lastName:'test'}]}];
+    	
+    	spyOn(bookSaveService, 'save').and.returnValue(updateDeferred.promise);
+    	spyOn($modal, 'open').and.returnValue({result: modalDeferred.promise});
+    	spyOn(Flash, 'create');
+    	
+    	// when
+    	$scope.update($scope.books[0]);
+    	modalDeferred.reject();
+    	updateDeferred.resolve();
+    	$scope.$digest();
+    	
+    	// then
+    	expect(bookSaveService.save).not.toHaveBeenCalled();
     	expect($scope.books[0].title).toBe('test');
     }));
 
